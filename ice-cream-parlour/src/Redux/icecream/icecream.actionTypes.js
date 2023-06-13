@@ -1,0 +1,12 @@
+export const GET_ICE_CREAM_LOADING = "icecream/get/loading";
+export const GET_ICE_CREAM_SUCCESS = "icecream/get/success";
+export const GET_ICE_CREAM_ERROR = "icecream/get/error";
+export const ADD_ICE_CREAM_LOADING = "icecream/add/loading";
+export const ADD_ICE_CREAM_SUCCESS = "icecream/add/success";
+export const ADD_ICE_CREAM_ERROR = "icecream/add/error";
+export const EDIT_ICE_CREAM_LOADING = "icecream/edit/loading";
+export const EDIT_ICE_CREAM_SUCCESS = "icecream/edit/success";
+export const EDIT_ICE_CREAM_ERROR = "icecream/edit/error";
+export const DELETE_ICE_CREAM_LOADING = "icecream/delete/loading";
+export const DELETE_ICE_CREAM_SUCCESS = "icecream/delete/success";
+export const DELETE_ICE_CREAM_ERROR = "icecream/delete/error";
