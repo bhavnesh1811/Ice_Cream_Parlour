@@ -1,12 +1,18 @@
-import React from 'react'
-import OwnerNavbar from '../Components/OwnerNavbar'
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import OwnerNavbar from "../Components/OwnerNavbar";
+import { getIceCreams } from "../Redux/icecream/icecream.action";
 
 const Owner = () => {
+  const dispatch =useDispatch()
+  useEffect(() => {
+    dispatch(getIceCreams());
+  }, []);
   return (
     <div>
-        <OwnerNavbar />
+      <OwnerNavbar />
     </div>
-  )
-}
+  );
+};
 
-export default Owner
+export default Owner;
