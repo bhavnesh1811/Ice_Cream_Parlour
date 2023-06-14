@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import CustomerNavbar from "../Components/CustomerNavbar";
 
 const Customer = () => {
   return (
-    <div>Customer</div>
-  )
-}
+    <div>
+      <CustomerNavbar />
+    </div>
+  );
+};
 
-export default Customer
+export default Customer;

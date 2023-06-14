@@ -15,10 +15,12 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
+import {  useNavigate } from "react-router-dom";
 
 const Login = () => {
-  
+  const nav = useNavigate();
   const toast = useToast();
+  
 
   const handleLogin = async () => {
     let res = await axios.post(`https://reqres.in/api/login`, {
@@ -36,6 +38,7 @@ const Login = () => {
       });
     }
     localStorage.setItem("token", JSON.stringify(res.data.token));
+    nav("/owner/inventory");
   };
   return (
     <Flex
