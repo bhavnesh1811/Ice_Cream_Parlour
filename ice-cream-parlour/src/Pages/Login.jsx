@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Flex,
   Box,
@@ -13,18 +12,29 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
 
 const Login = () => {
-  const nav = useNavigate();
+  
+  const toast = useToast();
 
   const handleLogin = async () => {
     let res = await axios.post(`https://reqres.in/api/login`, {
       email: "eve.holt@reqres.in",
       password: "cityslicka",
     });
-    // console.log(res.data.token);
+    console.log(res);
+    if (res.status === 200) {
+      toast({
+        title: "Login Successful.",
+        description: "Redirecting to inventory page.",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
     localStorage.setItem("token", JSON.stringify(res.data.token));
   };
   return (

@@ -7,7 +7,7 @@ const Owner = () => {
   const dispatch =useDispatch()
   useEffect(() => {
     dispatch(getIceCreams());
-  }, []);
+  }, [dispatch]);
   return (
     <div>
       <OwnerNavbar />
