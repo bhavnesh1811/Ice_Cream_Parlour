@@ -13,6 +13,7 @@ import {
   Text,
   useColorModeValue,
   useToast,
+  Image,
 } from "@chakra-ui/react";
 import axios from "axios";
 import {  useNavigate } from "react-router-dom";
@@ -33,66 +34,51 @@ const Login = () => {
         title: "Login Successful.",
         description: "Redirecting to inventory page.",
         status: "success",
-        duration: 9000,
+        duration: 2000,
         isClosable: true,
+        position:"top"
       });
     }
     localStorage.setItem("token", JSON.stringify(res.data.token));
     nav("/owner/inventory");
   };
   return (
-    <Flex
-      minH={"100vh"}
-      align={"center"}
-      justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
-    >
-      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
-        <Stack align={"center"}>
-          <Heading fontSize={"4xl"}>Sign in to your account</Heading>
-          <Text fontSize={"lg"} color={"gray.600"}>
-            to enjoy all of our cool <Link color={"blue.400"}>features</Link> ✌️
-          </Text>
-        </Stack>
-        <Box
-          rounded={"lg"}
-          bg={useColorModeValue("white", "gray.700")}
-          boxShadow={"lg"}
-          p={8}
-        >
-          <Stack spacing={4}>
-            <FormControl id="email">
-              <FormLabel>Email address</FormLabel>
-              <Input type="email" />
-            </FormControl>
-            <FormControl id="password">
-              <FormLabel>Password</FormLabel>
-              <Input type="password" />
-            </FormControl>
-            <Stack spacing={10}>
-              <Stack
-                direction={{ base: "column", sm: "row" }}
-                align={"start"}
-                justify={"space-between"}
-              >
-                <Checkbox>Remember me</Checkbox>
-                <Link color={"blue.400"}>Forgot password?</Link>
-              </Stack>
-              <Button
-                bg={"blue.400"}
-                color={"white"}
-                _hover={{
-                  bg: "blue.500",
-                }}
-                onClick={handleLogin}
-              >
-                Log in
-              </Button>
+    <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }} m={"40px 20px"}>
+      <Flex p={8} flex={1} align={'center'} justify={'center'}>
+        <Stack spacing={4} w={'full'} maxW={'md'}>
+          <Heading fontSize={'2xl'}>Sign in to your account</Heading>
+          <FormControl id="email">
+            <FormLabel>Email address</FormLabel>
+            <Input type="email" />
+          </FormControl>
+          <FormControl id="password">
+            <FormLabel>Password</FormLabel>
+            <Input type="password" />
+          </FormControl>
+          <Stack spacing={6}>
+            <Stack
+              direction={{ base: 'column', sm: 'row' }}
+              align={'start'}
+              justify={'space-between'}>
+              <Checkbox>Remember me</Checkbox>
+              <Link color={'blue.500'}>Forgot password?</Link>
             </Stack>
+            <Button colorScheme={'blue'} variant={'solid'} onClick={handleLogin}>
+              Sign in
+            </Button>
           </Stack>
-        </Box>
-      </Stack>
-    </Flex>
+        </Stack>
+      </Flex>
+      <Flex flex={1}>
+        <Image h={"500px"} m={"auto"}
+          alt={'Login Image'}
+          objectFit={'cover'}
+          src={
+            'https://c1.wallpaperflare.com/preview/615/178/465/ice-cream-fruits-dessert.jpg'
+          }
+        />
+      </Flex>
+    </Stack>
   );
 };
 

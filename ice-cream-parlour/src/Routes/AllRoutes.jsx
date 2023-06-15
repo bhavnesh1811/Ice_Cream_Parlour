@@ -24,7 +24,7 @@ const AllRoutes = () => {
         }
       />
       <Route
-        path="/owner/icecream"
+        path="/owner/icecreams/add"
         element={
           <PrivateOwnerRoute>
             <AddIceCreams />
