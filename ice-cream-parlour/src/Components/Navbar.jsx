@@ -1,7 +1,8 @@
 import { Button, Flex } from "@chakra-ui/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { CEN } from "../typography";
+import { CEN } from "../constants/typography";
+
 
 const Navbar = () => {
   const nav = useNavigate();

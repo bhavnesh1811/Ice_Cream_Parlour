@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
-import { SE } from "../typography";
+import { SE } from "../constants/typography";
 
 const CustomerNavbar = () => {
   return (

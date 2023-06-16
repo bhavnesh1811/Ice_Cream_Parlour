@@ -1,17 +1,14 @@
-import React from 'react'
-import { useEffect } from 'react'
-import Navbar from '../Components/Navbar'
+import React from "react";
+import { useEffect } from "react";
+import Navbar from "../Components/Navbar";
 
 const HomePage = () => {
-
-  useEffect(()=>{
-
-  },[])
+  useEffect(() => {}, []);
   return (
     <div>
-        Welcome to HomePage
+      <Navbar />
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
