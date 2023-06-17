@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Grid, Text } from "@chakra-ui/react";
+import { Button, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import EditModal from "../Modals/EditModal";
@@ -12,23 +12,38 @@ const Inventory = () => {
   useEffect(() => {
     dispatch(getIceCreams());
   }, [dispatch]);
-  return <Grid templateColumns={"repeat(3,1fr)"} gap={"20px"} m={"40px 20px"}>
-    {icecreams?.map((e)=>(
-      <Box key={e.id} boxShadow={"rgba(0,0,0,0.35)0px 5px 15px"} p={"20px"} borderRadius={"12px"} >
-        <Text>Name : {e.name}</Text>
-        <Text>Flavor : {e.Flavor}</Text>
-        <Text>Description : {e.Description}</Text>
-        <Text>Rs : {e.Price}</Text>
-
-        <Flex justifyContent={"space-around"}>
-          <EditModal {...e} />
-          <Button>
-            Delete
-          </Button>
-        </Flex>
-      </Box>
-    ))}
-  </Grid>;
+  return (
+    <Table>
+      <Thead>
+        <Tr>
+          <Th>Id</Th>
+          <Th>Name</Th>
+          <Th>Flavor</Th>
+          <Th>Description</Th>
+          <Th>Price</Th>
+          <Th>Edit</Th>
+          <Th>Delete</Th>
+        </Tr>
+      </Thead>
+      <Tbody>
+        {icecreams?.map((e) => (
+          <Tr key={e.id}>
+            <Td>{e.id}</Td>
+            <Td>{e.name}</Td>
+            <Td>{e.Flavor}</Td>
+            <Td>{e.Description}</Td>
+            <Td>Rs {e.Price}</Td>
+            <Td>
+              <EditModal {...e} />
+            </Td>
+            <Td>
+              <Button>Delete</Button>
+            </Td>
+          </Tr>
+        ))}
+      </Tbody>
+    </Table>
+  );
 };
 
 export default Inventory;

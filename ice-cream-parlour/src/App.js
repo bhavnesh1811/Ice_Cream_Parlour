@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./App.css";
+import Navbar from "./Components/Navbar";
 import Customer from "./Pages/Customer";
 import Owner from "./Pages/Owner";
 import AllRoutes from "./Routes/AllRoutes";
@@ -8,6 +9,7 @@ import AllRoutes from "./Routes/AllRoutes";
 function App() {
   const path = useLocation();
   let [routeData, setRouteData] = useState(path.pathname.split("/") || []);
+  console.log(routeData);
 
   useEffect(() => {
     setRouteData(routeData);
@@ -19,8 +21,9 @@ function App() {
       ) : routeData.includes("customer") ? (
         <Customer />
       ) : (
-        <AllRoutes />
+        <Navbar />
       )}
+      <AllRoutes />
     </div>
   );
 }
