@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Icecreams = () => {
-  return (
-    <div>Icecreams</div>
-  )
-}
+  return <div>Icecreams</div>;
+};
 
-export default Icecreams
+export default Icecreams;
