@@ -8,14 +8,14 @@ const HomePage = () => {
   return (
     <Flex justifyContent={CEN} gap="50px" m={"20px auto"}>
       <Button
-        onClick={() => nav("/owner")}
+        onClick={() => nav("/owner/login")}
         colorScheme={"teal"}
         variant={"solid"}
       >
         Owner Section
       </Button>
       <Button
-        onClick={() => nav("/customer")}
+        onClick={() => nav("/customer/icecreams")}
         colorScheme={"teal"}
         variant={"solid"}
       >

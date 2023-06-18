@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Customer from "../Pages/Customer";
+import Cart from "../Pages/Customer/Cart";
+import Icecreams from "../Pages/Customer/Icecreams";
 import HomePage from "../Pages/HomePage";
-import Owner from "../Pages/Owner";
 import AddIceCreams from "../Pages/Owner/AddIceCreams";
 import Inventory from "../Pages/Owner/Inventory";
 import Login from "../Pages/Owner/Login";
@@ -12,8 +12,6 @@ const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/owner" element={<Owner />} />
-      <Route path="/customer" element={<Customer />} />
       <Route path="/owner/login" element={<Login />} />
       <Route
         path="/owner/inventory"
@@ -31,6 +29,8 @@ const AllRoutes = () => {
           </PrivateOwnerRoute>
         }
       />
+        <Route path="/customer/icecreams" element={<Icecreams />} />
+        <Route path="/customer/cart" element={<Cart />} />
     </Routes>
   );
 };
