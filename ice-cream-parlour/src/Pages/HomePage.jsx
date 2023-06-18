@@ -1,10 +1,27 @@
+import { Button, Flex } from "@chakra-ui/react";
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
+import { CEN } from "../constants/typography";
+// import Navbar from "../Components/Navbar";
 const HomePage = () => {
+  const nav = useNavigate();
   return (
-    <div>
-      {""}
-    </div>
+    <Flex justifyContent={CEN} gap="50px" m={"20px auto"}>
+      <Button
+        onClick={() => nav("/owner")}
+        colorScheme={"teal"}
+        variant={"solid"}
+      >
+        Owner Section
+      </Button>
+      <Button
+        onClick={() => nav("/customer")}
+        colorScheme={"teal"}
+        variant={"solid"}
+      >
+        Customer Section
+      </Button>
+    </Flex>
   );
 };
 

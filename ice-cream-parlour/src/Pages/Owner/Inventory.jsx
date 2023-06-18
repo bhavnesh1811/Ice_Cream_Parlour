@@ -1,8 +1,9 @@
 import { Button, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import EditModal from "../Modals/EditModal";
-import { getIceCreams } from "../Redux/icecream/icecream.action";
+import EditModal from "../../Modals/EditModal";
+import { getIceCreams } from "../../Redux/icecream/icecream.action";
+
 
 const Inventory = () => {
   const { icecreams } = useSelector((store) => store.icecreamManager);

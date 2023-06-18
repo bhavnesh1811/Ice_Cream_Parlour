@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Flex,
-  Box,
   FormControl,
   FormLabel,
   Input,
@@ -10,8 +9,6 @@ import {
   Link,
   Button,
   Heading,
-  Text,
-  useColorModeValue,
   useToast,
   Image,
 } from "@chakra-ui/react";

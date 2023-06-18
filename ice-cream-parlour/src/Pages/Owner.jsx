@@ -1,9 +1,8 @@
-import OwnerNavbar from "../Components/OwnerNavbar";
 
 const Owner = () => {
   return (
     <div>
-      <OwnerNavbar />
+      Owner Page
     </div>
   );
 };

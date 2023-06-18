@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import AddIceCreams from "../Pages/AddIceCreams";
 import Customer from "../Pages/Customer";
 import HomePage from "../Pages/HomePage";
-import Inventory from "../Pages/Inventory";
-import Login from "../Pages/Login";
 import Owner from "../Pages/Owner";
+import AddIceCreams from "../Pages/Owner/AddIceCreams";
+import Inventory from "../Pages/Owner/Inventory";
+import Login from "../Pages/Owner/Login";
 import PrivateOwnerRoute from "./PrivateOwnerRoute";
 
 const AllRoutes = () => {
