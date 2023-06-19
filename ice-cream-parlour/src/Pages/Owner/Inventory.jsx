@@ -6,7 +6,10 @@ import Loader from "../../Components/Loader/Loader";
 import { LOADER_URL } from "../../constants/typography";
 import { ERROR_URL } from "../../constants/typography";
 import EditModal from "../../Modals/EditModal";
-import { getIceCreams } from "../../Redux/icecream/icecream.action";
+import {
+  deleteIceCreams,
+  getIceCreams,
+} from "../../Redux/icecream/icecream.action";
 
 const Inventory = () => {
   const { icecreams, loading, error } = useSelector(
@@ -16,7 +19,7 @@ const Inventory = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getIceCreams());
-  }, [dispatch]);
+  }, []);
 
   if (loading) {
     console.log(loading);
@@ -27,6 +30,10 @@ const Inventory = () => {
     return <Error404 gif={ERROR_URL} />;
   }
 
+  const deleteIceCream = (id) => {
+    dispatch(deleteIceCreams(id));
+  };
+
   return (
     <Table>
       <Thead>
@@ -36,6 +43,7 @@ const Inventory = () => {
           <Th>Flavor</Th>
           <Th>Description</Th>
           <Th>Price</Th>
+          <Th>Stock</Th>
           <Th>Edit</Th>
           <Th>Delete</Th>
         </Tr>
@@ -48,11 +56,12 @@ const Inventory = () => {
             <Td>{e.Flavor}</Td>
             <Td>{e.Description}</Td>
             <Td>Rs {e.Price}</Td>
+            <Td>{e.Stock}</Td>
             <Td>
               <EditModal {...e} />
             </Td>
             <Td>
-              <Button>Delete</Button>
+              <Button onClick={() => deleteIceCream(e.id)}>Delete</Button>
             </Td>
           </Tr>
         ))}

@@ -1,4 +1,7 @@
 import {
+  ADD_ICE_CREAM_ERROR,
+  ADD_ICE_CREAM_LOADING,
+    ADD_ICE_CREAM_SUCCESS,
     DELETE_ICE_CREAM_ERROR,
     DELETE_ICE_CREAM_LOADING,
     DELETE_ICE_CREAM_SUCCESS,
@@ -18,6 +21,15 @@ const initialState = {
 
 export const icecreamReducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    case ADD_ICE_CREAM_LOADING: {
+      return { ...state, loading: true, error: false };
+    }
+    case ADD_ICE_CREAM_SUCCESS: {
+      return { ...state, loading: false, error: false};
+    }
+    case ADD_ICE_CREAM_ERROR: {
+      return { ...state, loading: false, error: true };
+    }
     case GET_ICE_CREAM_LOADING: {
       return { ...state, loading: true, error: false };
     }
