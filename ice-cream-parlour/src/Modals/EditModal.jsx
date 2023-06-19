@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -12,7 +12,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { editIceCreams } from "../Redux/icecream/icecream.action";
+import { editIceCreams, getIceCreams } from "../Redux/icecream/icecream.action";
 const EditModal = ({ name, Description, Price, Flavor, Stock, id }) => {
   const OverlayOne = () => (
     <ModalOverlay
@@ -38,9 +38,10 @@ const EditModal = ({ name, Description, Price, Flavor, Stock, id }) => {
       Price: +newprice,
       Stock: +newstock,
     };
-    console.log(id,data);
+    console.log(id, data);
 
     dispatch(editIceCreams(id, data));
+    // dispatch(getIceCreams());
   };
 
   return (
@@ -97,7 +98,7 @@ const EditModal = ({ name, Description, Price, Flavor, Stock, id }) => {
             />
           </ModalBody>
           <ModalFooter gap={"20px"}>
-            <Button onClick={()=>editIceCream(id)}>Edit</Button>
+            <Button onClick={() => editIceCream(id)}>Edit</Button>
             <Button onClick={onClose}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
