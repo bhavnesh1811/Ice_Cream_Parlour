@@ -1,18 +1,47 @@
-import { Button, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import {
+  Button,
+  Table,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Error404 from "../../Components/Error/Error404";
+import Loader from "../../Components/Loader/Loader";
+import { LOADER_URL } from "../../constants/typography";
+import { ERROR_URL } from "../../constants/typography";
 import EditModal from "../../Modals/EditModal";
 import { getIceCreams } from "../../Redux/icecream/icecream.action";
 
-
 const Inventory = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const { icecreams } = useSelector((store) => store.icecreamManager);
-  console.log(icecreams);
-
+  // console.log(icecreams);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getIceCreams());
+    try {
+      setLoading(true);
+      dispatch(getIceCreams());
+      setLoading(false);
+      setError(false);
+    } catch (error) {
+      console.log(error);
+      setError(true);
+    }
   }, [dispatch]);
+
+  if (loading) {
+    console.log(loading);
+    return <Loader gif={LOADER_URL} />;
+  }
+
+  if (error) {
+    return <Error404 gif={ERROR_URL} />;
+  }
   return (
     <Table>
       <Thead>

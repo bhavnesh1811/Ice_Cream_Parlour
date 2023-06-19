@@ -228,3 +228,8 @@ export const LIGHTGREY = "lightgrey"
 export const YELLOW = "yellow"
 export const LIGHTPINK = "lightpink"
 export const YELLOWGREEN = "yellowgreen"
+
+export const LOADER_URL =
+  "https://i.giphy.com/media/xelHBioIJDyoSqu0z1/giphy.webp";
+export const ERROR_URL =
+  "https://i.giphy.com/media/aYpmlCXgX9dc09dbpl/giphy.webp";
