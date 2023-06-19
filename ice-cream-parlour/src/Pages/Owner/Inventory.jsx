@@ -1,12 +1,4 @@
-import {
-  Button,
-  Table,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/react";
+import { Button, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Error404 from "../../Components/Error/Error404";
@@ -17,21 +9,13 @@ import EditModal from "../../Modals/EditModal";
 import { getIceCreams } from "../../Redux/icecream/icecream.action";
 
 const Inventory = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const { icecreams } = useSelector((store) => store.icecreamManager);
-  // console.log(icecreams);
+  const { icecreams, loading, error } = useSelector(
+    (store) => store.icecreamManager
+  );
+  console.log(icecreams, loading, error);
   const dispatch = useDispatch();
   useEffect(() => {
-    try {
-      setLoading(true);
-      dispatch(getIceCreams());
-      setLoading(false);
-      setError(false);
-    } catch (error) {
-      console.log(error);
-      setError(true);
-    }
+    dispatch(getIceCreams());
   }, [dispatch]);
 
   if (loading) {
@@ -42,6 +26,7 @@ const Inventory = () => {
   if (error) {
     return <Error404 gif={ERROR_URL} />;
   }
+
   return (
     <Table>
       <Thead>
