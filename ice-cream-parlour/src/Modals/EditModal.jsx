@@ -12,7 +12,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { editIceCreams, getIceCreams } from "../Redux/icecream/icecream.action";
+import { editIceCreams } from "../Redux/icecream/icecream.action";
 const EditModal = ({ name, Description, Price, Flavor, Stock, id }) => {
   const OverlayOne = () => (
     <ModalOverlay
@@ -41,7 +41,7 @@ const EditModal = ({ name, Description, Price, Flavor, Stock, id }) => {
     console.log(id, data);
 
     dispatch(editIceCreams(id, data));
-    dispatch(getIceCreams());
+    
   };
 
   return (
