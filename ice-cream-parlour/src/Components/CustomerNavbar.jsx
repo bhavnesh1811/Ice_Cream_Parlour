@@ -11,7 +11,7 @@ const CustomerNavbar = () => {
       backgroundColor={"teal"}
       color={"white"}
     >
-      <Link to="/customer/Ice-creams">Ice Creams</Link>
+      <Link to="/customer/icecreams">Ice Creams</Link>
       <Link to="/customer/cart">Cart</Link>
     </Flex>
   );

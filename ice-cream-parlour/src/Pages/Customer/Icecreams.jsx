@@ -1,14 +1,18 @@
 import React, { useEffect } from "react";
 import { Button, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getIceCreams } from "../../Redux/icecream/icecream.action";
 import Loader from "../../Components/Loader/Loader";
 import { ERROR_URL, LOADER_URL } from "../../constants/typography";
 import Error404 from "../../Components/Error/Error404";
+import {
+  addIceCreamsToCart,
+} from "../../Redux/cart/cart.action";
 const Icecreams = () => {
   const { icecreams, loading, error } = useSelector(
     (store) => store.icecreamManager
   );
+  
   console.log(icecreams, loading, error);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -24,9 +28,10 @@ const Icecreams = () => {
     return <Error404 gif={ERROR_URL} />;
   }
 
-  const addToCart=()=>{
-
-  }
+  const addToCart = (data) => {
+    // console.log(data.id,data);
+    dispatch(addIceCreamsToCart(data));
+  };
 
   return (
     <Table>
@@ -39,7 +44,6 @@ const Icecreams = () => {
           <Th>Price</Th>
           <Th>Stock</Th>
           <Th>Add to Cart</Th>
-
         </Tr>
       </Thead>
       <Tbody>
@@ -52,7 +56,7 @@ const Icecreams = () => {
             <Td>Rs {e.Price}</Td>
             <Td>{e.Stock}</Td>
             <Td>
-              <Button onClick={() => addToCart(e.id)}>Add to Cart</Button>
+              <Button onClick={() => addToCart({ ...e })}>Add to Cart</Button>
             </Td>
           </Tr>
         ))}
