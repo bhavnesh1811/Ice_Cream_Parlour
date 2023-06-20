@@ -12,14 +12,12 @@ import {
   GET_CART_ERROR,
   GET_CART_LOADING,
   GET_CART_SUCCESS,
-} from "./icecream.actionTypes";
+} from "./cart.actionTypes";
 
 export const getIceCreamsFromCart = () => async (dispatch) => {
   dispatch({ type: GET_CART_LOADING });
   try {
-    let data = await axios.get(
-      `https://mock-server-2rva.onrender.com/cart`
-    );
+    let data = await axios.get(`https://mock-server-2rva.onrender.com/cart`);
     // console.log(data.data);
     dispatch({ type: GET_CART_SUCCESS, payload: data.data });
   } catch (error) {
@@ -30,9 +28,7 @@ export const getIceCreamsFromCart = () => async (dispatch) => {
 export const deleteIceCreamsFromCart = (id) => async (dispatch) => {
   dispatch({ type: DELETE_CART_LOADING });
   try {
-    axios.delete(
-      `https://mock-server-2rva.onrender.com/cart/${id}`
-    );
+    axios.delete(`https://mock-server-2rva.onrender.com/cart/${id}`);
     // console.log(data);
     dispatch({ type: DELETE_CART_SUCCESS });
     dispatch(getIceCreamsFromCart());
@@ -43,15 +39,11 @@ export const deleteIceCreamsFromCart = (id) => async (dispatch) => {
 export const editIceCreamsFromCart = (id, data) => async (dispatch) => {
   dispatch({ type: EDIT_CART_LOADING });
   try {
-    axios.patch(
-      `https://mock-server-2rva.onrender.com/cart/${id}`,
-      data,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    axios.patch(`https://mock-server-2rva.onrender.com/cart/${id}`, data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     // console.log(edited);
     dispatch({ type: EDIT_CART_SUCCESS });
     dispatch(getIceCreamsFromCart());
@@ -62,15 +54,11 @@ export const editIceCreamsFromCart = (id, data) => async (dispatch) => {
 export const addIceCreamsToCart = (data) => async (dispatch) => {
   dispatch({ type: ADD_CART_LOADING });
   try {
-    axios.post(
-      `https://mock-server-2rva.onrender.com/cart`,
-      data,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    axios.post(`https://mock-server-2rva.onrender.com/cart`, data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     // console.log(added);
     dispatch({ type: ADD_CART_SUCCESS });
     dispatch(getIceCreamsFromCart());

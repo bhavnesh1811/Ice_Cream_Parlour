@@ -1,60 +1,60 @@
 import {
-  ADD_ICE_CREAM_ERROR,
-  ADD_ICE_CREAM_LOADING,
-    ADD_ICE_CREAM_SUCCESS,
-    DELETE_ICE_CREAM_ERROR,
-    DELETE_ICE_CREAM_LOADING,
-    DELETE_ICE_CREAM_SUCCESS,
-    EDIT_ICE_CREAM_ERROR,
-    EDIT_ICE_CREAM_LOADING,
-  EDIT_ICE_CREAM_SUCCESS,
-  GET_ICE_CREAM_ERROR,
-  GET_ICE_CREAM_LOADING,
-  GET_ICE_CREAM_SUCCESS,
+  ADD_CART_ERROR,
+  ADD_CART_LOADING,
+  ADD_CART_SUCCESS,
+  DELETE_CART_ERROR,
+  DELETE_CART_LOADING,
+  DELETE_CART_SUCCESS,
+  EDIT_CART_ERROR,
+  EDIT_CART_LOADING,
+  EDIT_CART_SUCCESS,
+  GET_CART_ERROR,
+  GET_CART_LOADING,
+  GET_CART_SUCCESS,
 } from "./cart.actionTypes";
 
 const initialState = {
   loading: false,
   error: false,
-  icecreams: [],
+  cart: [],
 };
 
-export const icecreamReducer = (state = initialState, { type, payload }) => {
+export const cartReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case ADD_ICE_CREAM_LOADING: {
+    case ADD_CART_LOADING: {
       return { ...state, loading: true, error: false };
     }
-    case ADD_ICE_CREAM_SUCCESS: {
+    case ADD_CART_SUCCESS: {
       return { ...state, loading: false, error: false};
     }
-    case ADD_ICE_CREAM_ERROR: {
+    case ADD_CART_ERROR: {
       return { ...state, loading: false, error: true };
     }
-    case GET_ICE_CREAM_LOADING: {
+    case GET_CART_LOADING: {
       return { ...state, loading: true, error: false };
     }
-    case GET_ICE_CREAM_SUCCESS: {
-      return { ...state, loading: false, error: false ,icecreams:payload};
+    case GET_CART_SUCCESS: {
+      return { ...state, loading: false, error: false ,cart:payload};
     }
-    case GET_ICE_CREAM_ERROR: {
+    case GET_CART_ERROR: {
       return { ...state, loading: false, error: true };
     }
-    case EDIT_ICE_CREAM_LOADING: {
+    case EDIT_CART_LOADING: {
       return { ...state, loading: true, error: false };
     }
-    case EDIT_ICE_CREAM_SUCCESS: {
+    case EDIT_CART_SUCCESS: {
       return { ...state, loading: false, error: false };
     }
-    case EDIT_ICE_CREAM_ERROR: {
+    case EDIT_CART_ERROR: {
       return { ...state, loading: false, error: true };
     }
-    case DELETE_ICE_CREAM_LOADING: {
+    case DELETE_CART_LOADING: {
       return { ...state, loading: true, error: false };
     }
-    case DELETE_ICE_CREAM_SUCCESS: {
+    case DELETE_CART_SUCCESS: {
       return { ...state, loading: false, error: false };
     }
-    case DELETE_ICE_CREAM_ERROR: {
+    case DELETE_CART_ERROR: {
       return { ...state, loading: false, error: true };
     }
 
