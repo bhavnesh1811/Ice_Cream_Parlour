@@ -1,6 +1,5 @@
 import { Button, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { useEffect } from "react";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Error404 from "../../Components/Error/Error404";
 import Loader from "../../Components/Loader/Loader";
