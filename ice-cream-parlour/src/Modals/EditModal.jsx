@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -41,7 +41,7 @@ const EditModal = ({ name, Description, Price, Flavor, Stock, id }) => {
     console.log(id, data);
 
     dispatch(editIceCreams(id, data));
-    // dispatch(getIceCreams());
+    dispatch(getIceCreams());
   };
 
   return (

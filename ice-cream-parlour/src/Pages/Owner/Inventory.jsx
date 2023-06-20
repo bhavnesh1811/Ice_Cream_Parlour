@@ -33,6 +33,7 @@ const Inventory = () => {
 
   const deleteIceCream = (id) => {
     dispatch(deleteIceCreams(id));
+    dispatch(getIceCreams())
   };
 
   return (
