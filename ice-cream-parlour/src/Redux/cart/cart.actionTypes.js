@@ -1,0 +1,12 @@
+export const GET_CART_LOADING = "CART/get/loading";
+export const GET_CART_SUCCESS = "CART/get/success";
+export const GET_CART_ERROR = "CART/get/error";
+export const ADD_CART_LOADING = "CART/add/loading";
+export const ADD_CART_SUCCESS = "CART/add/success";
+export const ADD_CART_ERROR = "CART/add/error";
+export const EDIT_CART_LOADING = "CART/edit/loading";
+export const EDIT_CART_SUCCESS = "CART/edit/success";
+export const EDIT_CART_ERROR = "CART/edit/error";
+export const DELETE_CART_LOADING = "CART/delete/loading";
+export const DELETE_CART_SUCCESS = "CART/delete/success";
+export const DELETE_CART_ERROR = "CART/delete/error";
