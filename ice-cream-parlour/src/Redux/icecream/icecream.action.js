@@ -30,7 +30,7 @@ export const getIceCreams = () => async (dispatch) => {
 export const deleteIceCreams = (id) => async (dispatch) => {
   dispatch({ type: DELETE_ICE_CREAM_LOADING });
   try {
-    axios.delete(`https://mock-server-2rva.onrender.com/icecream/${id}`, {
+    await axios.delete(`https://mock-server-2rva.onrender.com/icecream/${id}`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -45,14 +45,14 @@ export const deleteIceCreams = (id) => async (dispatch) => {
 export const editIceCreams = (id, data) => async (dispatch) => {
   dispatch({ type: EDIT_ICE_CREAM_LOADING });
   try {
-    axios.patch(`https://mock-server-2rva.onrender.com/icecream/${id}`, data, {
+    await axios.patch(`https://mock-server-2rva.onrender.com/icecream/${id}`, data, {
       headers: {
         "Content-Type": "application/json",
       },
     });
-    // console.log(edited);
     dispatch({ type: EDIT_ICE_CREAM_SUCCESS });
     dispatch(getIceCreams());
+    
   } catch (error) {
     dispatch({ type: EDIT_ICE_CREAM_ERROR });
   }
@@ -60,7 +60,7 @@ export const editIceCreams = (id, data) => async (dispatch) => {
 export const addIceCreams = (data) => async (dispatch) => {
   dispatch({ type: ADD_ICE_CREAM_LOADING });
   try {
-    axios.post(`https://mock-server-2rva.onrender.com/icecream`, data, {
+    await axios.post(`https://mock-server-2rva.onrender.com/icecream`, data, {
       headers: {
         "Content-Type": "application/json",
       },
