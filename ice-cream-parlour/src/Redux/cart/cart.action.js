@@ -28,7 +28,7 @@ export const getIceCreamsFromCart = () => async (dispatch) => {
 export const deleteIceCreamsFromCart = (id) => async (dispatch) => {
   dispatch({ type: DELETE_CART_LOADING });
   try {
-    axios.delete(`https://mock-server-2rva.onrender.com/cart/${id}`);
+    await axios.delete(`https://mock-server-2rva.onrender.com/cart/${id}`);
     // console.log(data);
     dispatch({ type: DELETE_CART_SUCCESS });
     dispatch(getIceCreamsFromCart());
@@ -39,7 +39,7 @@ export const deleteIceCreamsFromCart = (id) => async (dispatch) => {
 export const editIceCreamsFromCart = (id, data) => async (dispatch) => {
   dispatch({ type: EDIT_CART_LOADING });
   try {
-    axios.patch(`https://mock-server-2rva.onrender.com/cart/${id}`, data, {
+    await axios.patch(`https://mock-server-2rva.onrender.com/cart/${id}`, data, {
       headers: {
         "Content-Type": "application/json",
       },

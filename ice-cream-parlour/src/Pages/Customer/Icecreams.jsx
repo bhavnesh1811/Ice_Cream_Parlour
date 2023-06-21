@@ -6,7 +6,7 @@ import Loader from "../../Components/Loader/Loader";
 import { ERROR_URL, LOADER_URL } from "../../constants/typography";
 import Error404 from "../../Components/Error/Error404";
 import {
-  addIceCreamsToCart,
+  addIceCreamsToCart, editIceCreamsFromCart,
 } from "../../Redux/cart/cart.action";
 const Icecreams = () => {
   const { icecreams, loading, error } = useSelector(
@@ -17,7 +17,7 @@ const Icecreams = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getIceCreams());
-  }, [dispatch]);
+  }, []);
 
   if (loading) {
     console.log(loading);
@@ -29,8 +29,15 @@ const Icecreams = () => {
   }
 
   const addToCart = (data) => {
-    // console.log(data.id,data);
-    dispatch(addIceCreamsToCart(data));
+    console.log(data.Quantity,data);
+    if(data.Quantity){
+      data.Quantity++;
+      console.log(data.Quantity);
+      dispatch(editIceCreamsFromCart(data.id,data))
+    }else{
+      data.Quantity=1;
+      dispatch(addIceCreamsToCart(data));
+    }
   };
 
   return (
