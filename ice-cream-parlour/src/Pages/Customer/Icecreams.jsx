@@ -27,12 +27,9 @@ const Icecreams = () => {
   const { cart } = useSelector((store) => store.cartManager);
   console.log(icecreams, loading, error);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getIceCreamsFromCart());
-  }, []);
+
   useEffect(() => {
     dispatch(getIceCreams());
-    // dispatch(getIceCreamsFromCart());
   }, []);
 
   if (loading) {
@@ -46,25 +43,9 @@ const Icecreams = () => {
 
   console.log(cart.length);
   const addToCart = (data) => {
-    console.log(cart.length);
-    if (cart?.length > 0) {
-      cart?.map((e) => {
-        if (e.id === data.id) {
-          console.log(e.id, data.id, data.Quantity);
-          return ++data.Quantity;
-        }
-        return e;
-      });
-
-      console.log(cart);
-      console.log(data.Quantity);
-      dispatch(editIceCreamsFromCart(data.id, data));
-    } else {
       data.Quantity = 1;
-      console.log(data);
       console.log(data.Quantity);
       dispatch(addIceCreamsToCart(data, toast));
-    }
   };
 
   return (
