@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getIceCreams } from "../icecream/icecream.action";
 import {
   ADD_CART_ERROR,
   ADD_CART_LOADING,
@@ -39,11 +40,15 @@ export const deleteIceCreamsFromCart = (id) => async (dispatch) => {
 export const editIceCreamsFromCart = (id, data) => async (dispatch) => {
   dispatch({ type: EDIT_CART_LOADING });
   try {
-    await axios.patch(`https://mock-server-2rva.onrender.com/cart/${id}`, data, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    await axios.patch(
+      `https://mock-server-2rva.onrender.com/cart/${id}`,
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     // console.log(edited);
     dispatch({ type: EDIT_CART_SUCCESS });
     dispatch(getIceCreamsFromCart());
@@ -51,16 +56,30 @@ export const editIceCreamsFromCart = (id, data) => async (dispatch) => {
     dispatch({ type: EDIT_CART_ERROR });
   }
 };
-export const addIceCreamsToCart = (data) => async (dispatch) => {
+export const addIceCreamsToCart = (data, toast) => async (dispatch) => {
   dispatch({ type: ADD_CART_LOADING });
   try {
-    await axios.post(`https://mock-server-2rva.onrender.com/cart`, data, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    await axios.post(
+      `https://mock-server-2rva.onrender.com/cart`,
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     // console.log(added);
+    // console.log(dispatch({ type: ADD_CART_SUCCESS }));
     dispatch({ type: ADD_CART_SUCCESS });
+    dispatch(getIceCreams());
+    return toast({
+      title: "Item Added Successfully.",
+      description: "Please click on add to cart to add more",
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+      position: "top",
+    });
   } catch (error) {
     dispatch({ type: ADD_CART_ERROR });
   }

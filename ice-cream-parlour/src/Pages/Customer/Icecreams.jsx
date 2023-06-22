@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { Button, Table, Tbody, Td, Th, Thead, Tr, useToast } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIceCreams } from "../../Redux/icecream/icecream.action";
 import Loader from "../../Components/Loader/Loader";
@@ -11,6 +11,7 @@ import {
   getIceCreamsFromCart,
 } from "../../Redux/cart/cart.action";
 const Icecreams = () => {
+  const toast=useToast()
   const { icecreams, loading, error } = useSelector(
     (store) => store.icecreamManager
   );
@@ -49,7 +50,7 @@ const Icecreams = () => {
       console.log(data);
       data.Quantity = 1;
       console.log(data.Quantity);
-      dispatch(addIceCreamsToCart(data));
+      dispatch(addIceCreamsToCart(data,toast));
     
   };
 
