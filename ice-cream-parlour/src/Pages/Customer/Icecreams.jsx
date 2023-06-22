@@ -1,5 +1,14 @@
 import React, { useEffect } from "react";
-import { Button, Table, Tbody, Td, Th, Thead, Tr, useToast } from "@chakra-ui/react";
+import {
+  Button,
+  Table,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+  useToast,
+} from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIceCreams } from "../../Redux/icecream/icecream.action";
 import Loader from "../../Components/Loader/Loader";
@@ -11,19 +20,20 @@ import {
   getIceCreamsFromCart,
 } from "../../Redux/cart/cart.action";
 const Icecreams = () => {
-  const toast=useToast()
+  const toast = useToast();
   const { icecreams, loading, error } = useSelector(
     (store) => store.icecreamManager
   );
-  // const { cart } = useSelector((store) => store.cartManager);
+  const { cart } = useSelector((store) => store.cartManager);
   console.log(icecreams, loading, error);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getIceCreams());
+    dispatch(getIceCreamsFromCart());
   }, []);
-  // useEffect(() => {
-  //   dispatch(getIceCreamsFromCart());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getIceCreams());
+    // dispatch(getIceCreamsFromCart());
+  }, []);
 
   if (loading) {
     console.log(loading);
@@ -34,24 +44,27 @@ const Icecreams = () => {
     return <Error404 gif={ERROR_URL} />;
   }
 
+  console.log(cart.length);
   const addToCart = (data) => {
-    // if (cart?.length > 0) {
-    //   cart?.map((e) => {
-    //     if (e.id === data.id) {
-    //       return e.Quantity++;
-    //     }
-    //     return e;
-    //   });
-    //   //  data.Quantity++;
-    //   console.log(cart);
-    //   console.log(data.Quantity);
-    //   dispatch(editIceCreamsFromCart(data.id, data));
-    // } else {
-      console.log(data);
-      data.Quantity = 1;
+    console.log(cart.length);
+    if (cart?.length > 0) {
+      cart?.map((e) => {
+        if (e.id === data.id) {
+          console.log(e.id, data.id, data.Quantity);
+          return ++data.Quantity;
+        }
+        return e;
+      });
+
+      console.log(cart);
       console.log(data.Quantity);
-      dispatch(addIceCreamsToCart(data,toast));
-    
+      dispatch(editIceCreamsFromCart(data.id, data));
+    } else {
+      data.Quantity = 1;
+      console.log(data);
+      console.log(data.Quantity);
+      dispatch(addIceCreamsToCart(data, toast));
+    }
   };
 
   return (

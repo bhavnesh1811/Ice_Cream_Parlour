@@ -52,6 +52,7 @@ export const editIceCreamsFromCart = (id, data) => async (dispatch) => {
     // console.log(edited);
     dispatch({ type: EDIT_CART_SUCCESS });
     dispatch(getIceCreamsFromCart());
+    dispatch(getIceCreams());
   } catch (error) {
     dispatch({ type: EDIT_CART_ERROR });
   }
@@ -59,15 +60,11 @@ export const editIceCreamsFromCart = (id, data) => async (dispatch) => {
 export const addIceCreamsToCart = (data, toast) => async (dispatch) => {
   dispatch({ type: ADD_CART_LOADING });
   try {
-    await axios.post(
-      `https://mock-server-2rva.onrender.com/cart`,
-      data,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    await axios.post(`https://mock-server-2rva.onrender.com/cart`, data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     // console.log(added);
     // console.log(dispatch({ type: ADD_CART_SUCCESS }));
     dispatch({ type: ADD_CART_SUCCESS });
