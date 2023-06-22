@@ -35,6 +35,14 @@ const Login = () => {
         isClosable: true,
         position:"top"
       });
+      toast({
+        title: "Login Successful.",
+        description: "Redirecting to inventory page.",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+        position:"top"
+      });
     }
     localStorage.setItem("token", JSON.stringify(res.data.token));
     nav("/owner/inventory");
