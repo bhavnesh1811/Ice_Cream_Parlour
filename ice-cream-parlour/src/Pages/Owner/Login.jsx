@@ -61,7 +61,7 @@ const Login = () => {
               <Link color={'blue.500'}>Forgot password?</Link>
             </Stack>
             <Button colorScheme={'blue'} variant={'solid'} onClick={handleLogin}>
-              Sign in
+              Sign up
             </Button>
           </Stack>
         </Stack>
