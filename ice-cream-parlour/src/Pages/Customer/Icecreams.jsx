@@ -59,8 +59,6 @@ const Icecreams = () => {
           <Th>Price</Th>
           <Th>Stock</Th>
           <Th>Add to Cart</Th>
-          <Th>Add to Cart</Th>
-          <Th>Add to Cart</Th>
         </Tr>
       </Thead>
       <Tbody>
