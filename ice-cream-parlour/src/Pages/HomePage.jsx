@@ -6,7 +6,7 @@ import { CEN } from "../constants/typography";
 const HomePage = () => {
   const nav = useNavigate();
   return (
-    <Flex justifyContent={CEN} gap="50px" m={"20px auto"}>
+    <Flex justifyContent={CEN} gap="50px" m={"20px auto"} backgroundImage= {"linear-gradient(90deg, brown, grey)"} h={"90vh"}>
       <Button
         onClick={() => nav("/owner/login")}
         colorScheme={"teal"}
