@@ -18,7 +18,7 @@ export const getIceCreamsFromCart = () => async (dispatch) => {
   dispatch({ type: GET_CART_LOADING });
   try {
     let data = await axios.get(`https://mock-server-2rva.onrender.com/cart`);
-    // console.log(data.data);
+    console.log(data.data);
     dispatch({ type: GET_CART_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({ type: GET_CART_ERROR });
@@ -54,14 +54,13 @@ export const editIceCreamsFromCart = (id, data) => async (dispatch) => {
 export const addIceCreamsToCart = (data) => async (dispatch) => {
   dispatch({ type: ADD_CART_LOADING });
   try {
-    axios.post(`https://mock-server-2rva.onrender.com/cart`, data, {
+    await axios.post(`https://mock-server-2rva.onrender.com/cart`, data, {
       headers: {
         "Content-Type": "application/json",
       },
     });
     // console.log(added);
     dispatch({ type: ADD_CART_SUCCESS });
-    dispatch(getIceCreamsFromCart());
   } catch (error) {
     dispatch({ type: ADD_CART_ERROR });
   }

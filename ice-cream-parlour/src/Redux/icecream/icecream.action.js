@@ -20,7 +20,7 @@ export const getIceCreams = () => async (dispatch) => {
     let data = await axios.get(
       `https://mock-server-2rva.onrender.com/icecream`
     );
-    // console.log(data.data);
+    console.log(data.data);
     dispatch({ type: GET_ICE_CREAM_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({ type: GET_ICE_CREAM_ERROR });

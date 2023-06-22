@@ -6,18 +6,23 @@ import Loader from "../../Components/Loader/Loader";
 import { ERROR_URL, LOADER_URL } from "../../constants/typography";
 import Error404 from "../../Components/Error/Error404";
 import {
-  addIceCreamsToCart, editIceCreamsFromCart,
+  addIceCreamsToCart,
+  editIceCreamsFromCart,
+  getIceCreamsFromCart,
 } from "../../Redux/cart/cart.action";
 const Icecreams = () => {
   const { icecreams, loading, error } = useSelector(
     (store) => store.icecreamManager
   );
-  
+  // const { cart } = useSelector((store) => store.cartManager);
   console.log(icecreams, loading, error);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getIceCreams());
   }, []);
+  // useEffect(() => {
+  //   dispatch(getIceCreamsFromCart());
+  // }, [dispatch]);
 
   if (loading) {
     console.log(loading);
@@ -29,15 +34,23 @@ const Icecreams = () => {
   }
 
   const addToCart = (data) => {
-    console.log(data.Quantity,data);
-    if(data.Quantity){
-      data.Quantity++;
+    // if (cart?.length > 0) {
+    //   cart?.map((e) => {
+    //     if (e.id === data.id) {
+    //       return e.Quantity++;
+    //     }
+    //     return e;
+    //   });
+    //   //  data.Quantity++;
+    //   console.log(cart);
+    //   console.log(data.Quantity);
+    //   dispatch(editIceCreamsFromCart(data.id, data));
+    // } else {
+      console.log(data);
+      data.Quantity = 1;
       console.log(data.Quantity);
-      dispatch(editIceCreamsFromCart(data.id,data))
-    }else{
-      data.Quantity=1;
       dispatch(addIceCreamsToCart(data));
-    }
+    
   };
 
   return (
