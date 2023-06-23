@@ -65,10 +65,7 @@ export const addIceCreamsToCart = (data, toast) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     });
-    // console.log(added);
-    // console.log(dispatch({ type: ADD_CART_SUCCESS }));
     dispatch({ type: ADD_CART_SUCCESS });
-    dispatch(getIceCreams());
     return toast({
       title: "Item Added Successfully.",
       description: "Please click on add to cart to add more",

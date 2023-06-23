@@ -8,7 +8,7 @@ import AllRoutes from "./Routes/AllRoutes";
 function App() {
   const path = useLocation();
   let [routeData, setRouteData] = useState(path.pathname.split("/") || []);
-  console.log(routeData);
+  // console.log(routeData);
 
   useEffect(() => {
     setRouteData(path.pathname.split("/"));
